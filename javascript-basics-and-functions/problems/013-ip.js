@@ -11,7 +11,7 @@
  * Пример:
  *
  * isIpValid('127.0.0.1') === true
- * isIpValid('127.0.0.0255') === true
+ * isIpValid('127.0.0.255') === true
  * isIpValid('127.0.256.0255') === false
  * isIpValid('Hello world') === false
  *
@@ -19,7 +19,22 @@
  * @returns {boolean}
  */
 function isIpValid(address) {
-    return undefined;
+    let addrParts = address.split('.')
+    if(addrParts.length !== 4) return false
+
+    for (let i = 0; i < 4; i++) {
+        if(addrParts[i].length > 3) return false
+
+        let num = Number(addrParts[i])
+        if(num < 0 || num > 255 || isNaN(num)) return false
+    }
+    return true;
 }
 
+console.log(isIpValid('127.0.0.0100'))
+
 module.exports = isIpValid;
+
+
+// console.log('ABC'.charCodeAt())  //46 48-57
+// console.log(String.fromCharCode(47))

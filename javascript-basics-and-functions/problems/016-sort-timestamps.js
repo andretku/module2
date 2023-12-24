@@ -9,7 +9,20 @@
  * @returns {string[]} отсортированный по возрастанию массив временных моментов
  */
 function sortTimestamps(list) {
-    return undefined;
+    let splitList = []
+    list.map(elem => {
+        splitList.push(elem.split(':').join(''))
+    })
+
+    splitList.sort((a,b) => a-b)
+
+    let result = []
+    splitList.map(elem => {
+        result.push(`${elem.slice(0,2)}:${elem.slice(2,4)}:${elem.slice(4,6)}`)
+    })
+
+    return console.log(result);
 }
+sortTimestamps(['23:02:59', '02:07:00'])
 
 module.exports = sortTimestamps;

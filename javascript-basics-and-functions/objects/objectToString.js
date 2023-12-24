@@ -4,10 +4,17 @@
  * @return {string} - строковое представление объекта
  */
 function objectToString(obj) {
-    // ваш код здесь
+    let keys = Object.keys(obj)
+    let values = Object.values(obj)
+    let a = []
+
+    for (let i=0; i<keys.length; i++) {
+        a[i] = `${keys[i]}=${values[i]}`
+    }
+    return a.join('&')
 }
 
 // Примеры:
-console.log(objectToString({a: 1, b: 2, c: 3})); // "a=1&b=2&c=3"
+// console.log(objectToString({a: 1, b: 2, c: 3})); // "a=1&b=2&c=3"
 console.log(objectToString({foo: "hello", bar: "world"})); // "foo=hello&bar=world"
-console.log(objectToString({x: true, y: false})); // "x=true&y=false"
+// console.log(objectToString({x: true, y: false})); // "x=true&y=false"

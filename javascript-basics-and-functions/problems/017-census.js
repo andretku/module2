@@ -13,7 +13,16 @@
  * @returns {undefined|number}
  */
 function census(list) {
-    return -1;
+    let male = list.filter(elem => elem.gender === 'Male')
+    let ages = []
+    for (let i = 0; i < male.length; i++) {
+        ages.push(male[i].age)
+    }
+    let max = Math.max(...ages)
+    let index = ages.indexOf(max)
+
+    return index + 1;
 }
+console.log(census([{ age: 12, gender: 'Male' }, { age: 40, gender: 'Male' }]) )
 
 module.exports = census;
